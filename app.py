@@ -21,4 +21,5 @@ def recibir_pedido():
     print("Pedido guardado correctamente en pedidos.txt")
 
     # Devuelve una respuesta, con una redirección a “solicita_pedido.html”
-    return redirect("http://localhost/solicita_pedido.html", code=302)  
+    return redirect("http://localhost/solicita_pedido.html", code=302)
+      
