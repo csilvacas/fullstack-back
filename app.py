@@ -1,3 +1,4 @@
+""" Creacion de Pedidos """
 from flask import Flask, request, redirect
 from persistencia import guardar_pedido
 
@@ -7,6 +8,7 @@ app = Flask(__name__)
 
 @app.route("/pizza", methods=['POST'])
 def recibir_pedido():
+    """ Procesar Formulario """
     # Procesar los datos del formulario enviado por POST
     nombre = request.form.get("nombre")
     apellidos = request.form.get("apellidos")
@@ -19,7 +21,4 @@ def recibir_pedido():
     print("Pedido guardado correctamente en pedidos.txt")
 
     # Devuelve una respuesta, con una redirección a “solicita_pedido.html”
-    return redirect("http://localhost/solicita_pedido.html", code=302)
-   
-
-   
+    return redirect("http://localhost/solicita_pedido.html", code=302)  
