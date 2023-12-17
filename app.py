@@ -1,5 +1,5 @@
 """ Creacion de Pedidos """
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, Response
 from persistencia import guardar_pedido
 
 app = Flask(__name__)
@@ -22,4 +22,18 @@ def recibir_pedido():
 
     # Devuelve una respuesta, con una redirección a “solicita_pedido.html”
     return redirect("http://localhost/solicita_pedido.html", code=302)
-      
+
+@app.route("/checksize", methods=['POST'])
+def checksize():
+    """
+    Comprueba disponibilidad de un tamaño de pizza.
+    """
+    size = request.form.get('tamano')
+    print(size)
+   
+    if size == 'S':
+        mensaje = 'No disponible'
+    else:
+        mensaje = 'Disponible'
+
+    return Response(mensaje, 200, {'Access-Control-Allow-Origin': '*'})
